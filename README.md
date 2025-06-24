@@ -35,7 +35,7 @@ sensors/
 ### **1. Instalación**
 ```bash
 # Navegar al proyecto
-cd sensors-prueba/sensors
+cd sensors
 
 # Instalar dependencias del servidor
 cd server
