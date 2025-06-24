@@ -1,4 +1,4 @@
-# 🚀 Dashboard IoT
+# Dashboard IoT
 
 ## 📋 **OBJETIVO**
 
@@ -13,12 +13,12 @@ Desarrollar **desde cero** un dashboard completo de sensores IoT en tiempo real 
 
 ---
 
-## 🏗️ **ESTRUCTURA DEL PROYECTO**
+## **ESTRUCTURA DEL PROYECTO**
 
 ```
 sensors/
 ├── 📄 README.md                    # Este archivo
-├── 📁 server/                    # ✅ SERVIDOR COMPLETO Y FUNCIONAL
+├── 📁 server/                    # SERVIDOR COMPLETO Y FUNCIONAL
 │   ├── package.json               # Dependencias del servidor
 │   ├── server.js                 # Servidor WebSocket con 5 sensores simulados
 │   └── README.md                  # Documentación del servidor
@@ -43,7 +43,7 @@ sensors/
 
 ---
 
-## 🚀 **INICIO RÁPIDO**
+## **INICIO RÁPIDO**
 
 ### **1. Instalación**
 ```bash
@@ -64,7 +64,7 @@ npm install
 # Terminal 1 - Servidor WebSocket
 cd server
 npm start
-# ✅ Servidor corriendo en ws://localhost:8080
+# Servidor corriendo en ws://localhost:8080
 
 # Terminal 2 - Frontend Angular
 cd frontend
@@ -79,16 +79,16 @@ ng serve
 
 ---
 
-## 📊 **SERVIDOR IMPLEMENTADO**
+## **SERVIDOR IMPLEMENTADO**
 
 ### **WebSocket Endpoint:** `ws://localhost:8080`
 
 El servidor ya está **completamente implementado** con:
-- ✅ **5 Sensores Simulados:** Temperatura (2), Humedad (1), Movimiento (1), Luz (1)
-- ✅ **Datos en Tiempo Real:** Actualizaciones cada 2 segundos
-- ✅ **Simulación de Errores:** 2% probabilidad de errores por sensor
-- ✅ **API Completa:** Múltiples tipos de mensajes y comandos
-- ✅ **Health Check:** Endpoint HTTP para monitoreo
+- **5 Sensores Simulados:** Temperatura (2), Humedad (1), Movimiento (1), Luz (1)
+- **Datos en Tiempo Real:** Actualizaciones cada 2 segundos
+- **Simulación de Errores:** 2% probabilidad de errores por sensor
+- **API Completa:** Múltiples tipos de mensajes y comandos
+- **Health Check:** Endpoint HTTP para monitoreo
 
 ### **Sensores Disponibles:**
 ```typescript
@@ -238,7 +238,7 @@ El servidor ya está **completamente implementado** con:
 
 ---
 
-## 🎯 **LO QUE DEBES IMPLEMENTAR**
+## **LO QUE DEBES IMPLEMENTAR**
 
 ### **Frontend**
 
@@ -278,26 +278,26 @@ El servidor ya está **completamente implementado** con:
 - [ ] Grid responsivo para sensor cards
 
 ### **Características Obligatorias**
-- ✅ **Standalone Components** sin AppModule
-- ✅ **Signals** para estado reactivo completo
-- ✅ **Control Flow** (@for, @if, @defer) en templates
-- ✅ **inject()** pattern en lugar de constructor DI
-- ✅ **TypeScript estricto** sin 'any' types
+- **Standalone Components** sin AppModule
+- **Signals** para estado reactivo completo
+- **Control Flow** (@for, @if, @defer) en templates
+- **inject()** pattern en lugar de constructor DI
+- **TypeScript estricto** sin 'any' types
 
 ---
 
-## 🚀 **PUNTOS BONUS**
+## **PUNTOS BONUS**
 
 
 ### **Features Adicionales**
-- ✅ **Data Visualization** - Gráficos interactivos (Chart.js/D3.js)
-- ✅ **Real-time Notifications** - Push notifications del navegador
-- ✅ **Internationalization** - i18n con múltiples idiomas
-- ✅ **Dark/Light Theme** - Sistema de temas con persistencia
+- **Data Visualization** - Gráficos interactivos (Chart.js/D3.js)
+- **Real-time Notifications** - Push notifications del navegador
+- **Internationalization** - i18n con múltiples idiomas
+- **Dark/Light Theme** - Sistema de temas con persistencia
 
 ---
 
-## 📝 **ENTREGABLES**
+## **ENTREGABLES**
 
 ### **Código Fuente (Obligatorio)**
 - [ ] Repositorio Git con commits descriptivos y frecuentes
@@ -310,7 +310,7 @@ El servidor ya está **completamente implementado** con:
 
 ---
 
-## ❓ **PREGUNTAS FRECUENTES**
+## **PREGUNTAS FRECUENTES**
 
 **Q: ¿Puedo usar librerías adicionales?**
 A: Sí, pero justifica su uso. Preferimos implementaciones custom que demuestren tus habilidades. UI libraries (Material, PrimeNG) o charting (Chart.js) son aceptables.
@@ -320,9 +320,6 @@ A: No, pero prioriza funcionalidad core sobre características bonus. Mejor poca
 
 **Q: ¿Puedo modificar el servidor?**
 A: No, el servidor está completamente implementado y no debe modificarse. Solo trabaja en el frontend.
-
-**Q: ¿Cómo manejo TypeScript strict mode?**
-A: Mantén el modo estricto habilitado. Las interfaces base están en `types/sensor.types.ts` - complétalas con todos los datos del servidor.
 
 **Q: ¿Qué framework CSS recomiendan?**
 A: Tailwind CSS (recomendado), Bootstrap 5, o Angular Material. También puedes usar CSS puro con variables CSS modernas.
