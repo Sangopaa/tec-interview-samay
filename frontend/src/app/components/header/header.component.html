@@ -1,0 +1,33 @@
+<div class="connection-status" [class]="'status-' + estadoConexion().estado">
+  <div class="status-indicator">
+    <div class="indicator-dot" [class]="'dot-' + estadoConexion().estado"></div>
+    <span class="status-text">
+      @switch (estadoConexion().estado) { @case ('conectado') { Conectado }
+      @case ('conectando') { Conectando... } @case ('desconectado') {
+      Desconectado } @case ('error') { Error } @default { Desconocido } }
+    </span>
+  </div>
+
+  @if (estadoConexion().estado === 'conectado') {
+  <div class="connection-details">
+    @if (estadoConexion().latencia) {
+    <span class="latency">{{ estadoConexion().latencia }}ms</span>
+    } @if (estadoConexion().ultimaConexion) {
+    <span class="last-connection">
+      Conectado: {{ formatTime(estadoConexion().ultimaConexion) }}
+    </span>
+    }
+  </div>
+  } @if (estadoConexion().estado === 'error' || estadoConexion().estado ===
+  'desconectado') {
+  <button
+    class="reconnect-btn"
+    (click)="reconectar()"
+    [disabled]="estadoConexion().estado === 'conectando'"
+  >
+    {{
+      estadoConexion().estado === "conectando" ? "Conectando..." : "Reconectar"
+    }}
+  </button>
+  }
+</div>

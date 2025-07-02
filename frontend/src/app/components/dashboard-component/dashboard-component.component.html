@@ -1,0 +1,43 @@
+<app-header></app-header>
+
+<div class="metrics-container">
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-icon">📊</div>
+      <div class="metric-content">
+        <div class="metric-value">{{ metricas().sensoresActivos }}</div>
+        <div class="metric-label">Sensores Activos</div>
+      </div>
+    </div>
+
+    <div class="metric-card error">
+      <div class="metric-icon">⚠️</div>
+      <div class="metric-content">
+        <div class="metric-value">{{ metricas().sensoresConError }}</div>
+        <div class="metric-label">Con Errores</div>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-icon">🌡️</div>
+      <div class="metric-content">
+        <div class="metric-value">
+          {{ metricas().promedioTemperatura ?? '--' }}°C
+        </div>
+        <div class="metric-label">Temp. Promedio</div>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-icon">💧</div>
+      <div class="metric-content">
+        <div class="metric-value">
+          {{ metricas().promedioHumedad ?? '--' }}%
+        </div>
+        <div class="metric-label">Humedad Promedio</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-sensor-list></app-sensor-list>

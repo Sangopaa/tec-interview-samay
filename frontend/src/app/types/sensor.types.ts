@@ -1,38 +1,109 @@
-/*
-  TODO: Definir todas las interfaces TypeScript para el proyecto
-  
-  El servidor WebSocket envía estos tipos de datos:
-  
-  1. Mensaje de conexión establecida
-  2. Lecturas de sensores en tiempo real
-  3. Errores de sensores
-  4. Lista de sensores disponibles
-  5. Estadísticas del servidor
-  
-  Debes crear interfaces para todos estos tipos de datos.
-  Recuerda usar union types, enums y genéricos donde sea apropiado.
-*/
-
-// Ejemplo de cómo empezar:
-
 export type TipoSensor = 'temperatura' | 'humedad' | 'luz' | 'movimiento';
-
 export type EstadoSensor = 'normal' | 'advertencia' | 'error' | 'offline';
-
-// TODO: Crear todas las interfaces necesarias para:
-// - LecturaSensor
-// - ErrorSensor
-// - MensajeWebSocket
-// - EstadoConexion
-// - InfoSensor
-// - EstadisticasServidor
-// - Y cualquier otra interfaz que necesites
+export type SeveridadError = 'baja' | 'media' | 'alta';
+export type EstadoConexionType = 'conectado' | 'desconectado' | 'conectando' | 'error';
 
 export interface SensorBase {
   id: string;
   nombre: string;
   tipo: TipoSensor;
-  // TODO: Completar esta interface
+  ubicacion: string;
+  unidad: string;
+  rango: string;
 }
 
-// TODO: Implementar el resto de interfaces aquí
+export interface MetadataSensor {
+  nivelBateria: number;
+  intensidadSenal: number;
+}
+
+export interface LecturaSensor {
+  sensorId: string;
+  valor: number | boolean;
+  unidad: string;
+  estado: EstadoSensor;
+  timestamp: string;
+  metadata: MetadataSensor;
+}
+
+export interface ErrorSensor {
+  codigoError: string;
+  sensorId: string;
+  mensaje: string;
+  severidad: SeveridadError;
+  timestamp?: string;
+}
+
+export interface MensajeConexion {
+  tipo: 'conexion_establecida';
+  mensaje: string;
+  clienteId: string;
+  timestamp: string;
+}
+
+export interface MensajeLectura {
+  tipo: 'lectura_sensor';
+  datos: LecturaSensor;
+}
+
+export interface MensajeError {
+  tipo: 'error_sensor';
+  datos: ErrorSensor;
+}
+
+export interface MensajeListaSensores {
+  tipo: 'lista_sensores';
+  sensores: SensorBase[];
+}
+
+export interface EstadisticasServidor {
+  tiempoActividad: number;
+  totalConexiones: number;
+  sensoresActivos: number;
+  erroresTotales: number;
+}
+
+export interface MensajeEstadisticas {
+  tipo: 'estadisticas_servidor';
+  datos: EstadisticasServidor;
+}
+
+export type MensajeWebSocket = 
+  | MensajeConexion 
+  | MensajeLectura 
+  | MensajeError 
+  | MensajeListaSensores
+  | MensajeEstadisticas;
+
+export interface ComandoWebSocket {
+  tipo: 'ping' | 'obtener_sensores' | 'obtener_estadisticas_servidor';
+}
+
+export interface InfoEstadoConexion {
+  estado: EstadoConexionType;
+  latencia?: number;
+  uptime?: number;
+  ultimaConexion?: Date;
+  intentosReconexion?: number;
+}
+
+export interface SensorConLectura extends SensorBase {
+  ultimaLectura?: LecturaSensor;
+  ultimoError?: ErrorSensor;
+  estaActivo: boolean;
+}
+
+export interface FiltrosSensores {
+  tipo?: TipoSensor;
+  ubicacion?: string;
+  estado?: EstadoSensor;
+  busqueda?: string;
+}
+
+export interface MetricasDashboard {
+  sensoresActivos: number;
+  sensoresConError: number;
+  promedioTemperatura?: number;
+  promedioHumedad?: number;
+  ultimaActualizacion: Date;
+}

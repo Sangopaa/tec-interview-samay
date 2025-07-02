@@ -1,0 +1,64 @@
+.connection-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.indicator-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+}
+
+.dot-conectado {
+  background: #28a745;
+}
+
+.dot-desconectado, .dot-error {
+  background: #dc3545;
+}
+
+.dot-conectando {
+  background: #ffc107;
+}
+
+.status-text {
+  font-weight: bold;
+}
+
+.connection-details {
+  font-size: 0.95em;
+  color: #555;
+  margin-left: 20px;
+}
+
+.latency {
+  margin-right: 12px;
+}
+
+.reconnect-btn {
+  margin-top: 6px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: none;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.reconnect-btn[disabled] {
+  background: #aaa;
+  cursor: not-allowed;
+}

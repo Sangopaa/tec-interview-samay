@@ -1,0 +1,13 @@
+<div class="sensors-list-container">
+  <ul class="sensors-list">
+    @for (sensor of sensores(); track sensor.id) {
+      <li class="sensor-card">
+        <div class="sensor-title">{{ sensor.nombre }}</div>
+        <div class="sensor-type">{{ sensor.tipo }}</div>
+        <div class="sensor-detail">
+          <app-sensor-detail [sensor]="sensor" />
+        </div>
+      </li>
+    }
+  </ul>
+</div>
