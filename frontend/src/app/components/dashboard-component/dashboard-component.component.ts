@@ -3,11 +3,12 @@ import { WebSocketService } from "src/app/services/websocket.service";
 
 import { HeaderComponent } from "../header/header.component";
 import { SensorListComponent } from "../sensor-list/sensor-list.component";
+import { ErrorLogsComponent } from "../error-logs/error-logs.component";
 
 @Component({
   selector: "app-dashboard-component",
   standalone: true,
-  imports: [HeaderComponent, SensorListComponent],
+  imports: [HeaderComponent, SensorListComponent, ErrorLogsComponent],
   templateUrl: "./dashboard-component.component.html",
   styleUrl: "./dashboard-component.component.css",
 })

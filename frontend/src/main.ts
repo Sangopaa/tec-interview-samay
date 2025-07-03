@@ -1,16 +1,15 @@
 import { bootstrapApplication } from "@angular/platform-browser";
-import { provideHttpClient } from "@angular/common/http";
+import { provideHttpClient, withInterceptors } from "@angular/common/http";
 
 import { DashboardComponentComponent } from "./app/components/dashboard-component/dashboard-component.component";
-import { ErrorHandlingInterceptor } from "./app/interceptors/error-handling.interceptor";
+
+import { errorHandlingInterceptor } from "./app/interceptors/error-handling.interceptor";
+import { LoggingInterceptor } from "./app/interceptors/logging.interceptor";
 
 bootstrapApplication(DashboardComponentComponent, {
   providers: [
-    provideHttpClient(),
-    {
-      provide: "HTTP_INTERCEPTORS",
-      useClass: ErrorHandlingInterceptor,
-      multi: true,
-    },
+    provideHttpClient(
+      withInterceptors([LoggingInterceptor, errorHandlingInterceptor])
+    ),
   ],
-}).catch((err) => console.error(err));
+}).catch((err) => console.error("Error iniciando aplicación:", err));

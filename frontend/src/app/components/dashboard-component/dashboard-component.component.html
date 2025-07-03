@@ -3,7 +3,7 @@
 <div class="metrics-container">
   <div class="metrics-grid">
     <div class="metric-card">
-      <div class="metric-icon">📊</div>
+      <div class="metric-icon">🟢</div>
       <div class="metric-content">
         <div class="metric-value">{{ metricas().sensoresActivos }}</div>
         <div class="metric-label">Sensores Activos</div>
@@ -11,7 +11,7 @@
     </div>
 
     <div class="metric-card">
-      <div class="metric-icon">🌡️</div>
+      <div class="metric-icon">🔥</div>
       <div class="metric-content">
         <div class="metric-value">
           {{ metricas().promedioTemperatura ?? "--" }}°C
@@ -21,7 +21,7 @@
     </div>
 
     <div class="metric-card">
-      <div class="metric-icon">💧</div>
+      <div class="metric-icon">💦</div>
       <div class="metric-content">
         <div class="metric-value">
           {{ metricas().promedioHumedad ?? "--" }}%
@@ -33,3 +33,5 @@
 </div>
 
 <app-sensor-list></app-sensor-list>
+
+<app-error-logs></app-error-logs>
