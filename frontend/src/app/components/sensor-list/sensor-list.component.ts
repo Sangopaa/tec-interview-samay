@@ -1,6 +1,10 @@
 import { Component, inject, signal, computed } from "@angular/core";
 import { WebSocketService } from "src/app/services/websocket.service";
-import { SensorBase, SensorConLectura, EstadoSensor } from "src/app/types/sensor.types";
+import {
+  SensorBase,
+  SensorConLectura,
+  EstadoSensor,
+} from "src/app/types/sensor.types";
 import { SensorDetailComponent } from "../sensor-detail/sensor-detail.component";
 
 @Component({
@@ -13,8 +17,8 @@ import { SensorDetailComponent } from "../sensor-detail/sensor-detail.component"
 export class SensorListComponent {
   sensores = inject(WebSocketService);
 
-  filtro = signal('');
-  filtroEstado = signal<EstadoSensor | ''>('');
+  filtro = signal("");
+  filtroEstado = signal<EstadoSensor | "">("");
 
   sensoresConLecturas = computed(() => {
     const sensores = this.sensores.sensoresDisponibles();
@@ -31,23 +35,20 @@ export class SensorListComponent {
           estaActivo: !!ultimaLectura && ultimaLectura.estado !== "offline",
         } as SensorConLectura;
       })
-      .filter(sensor =>
-        sensor.nombre.toLowerCase().includes(filtro)
-        && (filtroEstado === '' || (sensor.ultimaLectura && sensor.ultimaLectura.estado === filtroEstado))
+      .filter(
+        (sensor) =>
+          sensor.nombre.toLowerCase().includes(filtro) &&
+          (filtroEstado === "" ||
+            (sensor.ultimaLectura &&
+              sensor.ultimaLectura.estado === filtroEstado))
       );
   });
 
-  selectedSensor = signal<SensorBase | null>(null);
-
-  seleccionar(sensor: SensorBase) {
-    this.selectedSensor.set(sensor);
-  }
-
-  estados: { value: EstadoSensor | '', label: string }[] = [
-    { value: '', label: 'Todos' },
-    { value: 'normal', label: 'Normal' },
-    { value: 'advertencia', label: 'Advertencia' },
-    { value: 'error', label: 'Error' },
-    { value: 'offline', label: 'Offline' },
+  estados: { value: EstadoSensor | ""; label: string }[] = [
+    { value: "", label: "Todos" },
+    { value: "normal", label: "Normal" },
+    { value: "advertencia", label: "Advertencia" },
+    { value: "error", label: "Error" },
+    { value: "offline", label: "Offline" },
   ];
 }

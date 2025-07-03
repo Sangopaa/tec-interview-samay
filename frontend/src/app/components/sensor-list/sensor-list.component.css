@@ -4,6 +4,13 @@
   padding: 20px 0;
 }
 
+.sensor-list-title{
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 .sensors-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

@@ -1,0 +1,125 @@
+.error-cards-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.error-list-title{
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.error-container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  background: #fff6f6;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border: 1px solid #ececec;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.error-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e02424;
+  color: white;
+  padding: 12px 20px 12px 16px;
+  position: relative;
+}
+
+.error-header .error-severity {
+  background: #fff6f6;
+  color: #e02424;
+  border-radius: 16px;
+  padding: 2px 16px;
+  font-size: 0.95em;
+  font-weight: 500;
+  border: 1px solid #e02424;
+}
+
+.error-body {
+  padding: 18px 24px 8px 24px;
+  background: #fff6f6;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.error-body-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2px;
+}
+
+.error-body-row .label {
+  font-weight: 600;
+  color: #888;
+  min-width: 70px;
+}
+
+.error-body-row .value {
+  font-weight: 600;
+  color: #222;
+}
+
+.error-body-row .icon {
+  font-size: 1.1em;
+  color: #e02424;
+}
+
+.error-footer {
+  background: #f8fafb;
+  padding: 10px 20px;
+  border-top: 1px solid #ececec;
+  text-align: center;
+}
+
+.error-footer button {
+  background: none;
+  border: none;
+  color: #1976d2;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 0;
+}
+
+/* Severidad colores */
+.error-severity-alta .error-header {
+  background: #e02424;
+}
+.error-severity-media .error-header {
+  background: orange;
+  color: white;
+}
+.error-severity-media .error-header .error-severity {
+  color: orange;
+  border-color: orange;
+}
+.error-severity-baja .error-header {
+  background: green;
+  color: white;
+}
+.error-severity-baja .error-header .error-severity {
+  color: green;
+  border-color: green;
+}
+
+/* Iconos */
+.error-icon {
+  margin-right: 8px;
+  font-size: 1.2em;
+  vertical-align: middle;
+}

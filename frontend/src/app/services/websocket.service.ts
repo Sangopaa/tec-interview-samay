@@ -262,4 +262,9 @@ export class WebSocketService {
   obtenerSensoresPorTipo(tipo: string): SensorBase[] {
     return this._sensoresDisponibles().filter((sensor) => sensor.tipo === tipo);
   }
+
+  // Permite eliminar un error de la lista desde componentes externos
+  eliminarError(error: ErrorSensor) {
+    this._erroresSensores.update((errores) => errores.filter(e => e !== error));
+  }
 }
