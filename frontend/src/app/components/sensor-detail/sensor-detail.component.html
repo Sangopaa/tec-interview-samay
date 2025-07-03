@@ -1,7 +1,51 @@
-<div class="sensor-details-container">
-  <ul class="sensor-details-list">
-    <li><strong>ID:</strong> {{ sensor.id }}</li>
-    <li><strong>Nombre:</strong> {{ sensor.nombre }}</li>
-    <li><strong>Tipo:</strong> {{ sensor.tipo }}</li>
-  </ul>
+<div class="sensor-card-detail">
+  <div class="sensor-card-header">
+    <div>
+      <div class="sensor-card-title">{{ sensor.nombre }}</div>
+      <div class="sensor-card-id">{{ sensor.id }}</div>
+    </div>
+    <div class="sensor-card-status" [ngClass]="sensor.ultimaLectura?.estado">
+      <span *ngIf="sensor.ultimaLectura?.estado === 'normal'">✔</span>
+      <span *ngIf="sensor.ultimaLectura?.estado === 'error'">✖</span>
+      <span *ngIf="sensor.ultimaLectura?.estado === 'advertencia'">⚠</span>
+      <span *ngIf="sensor.ultimaLectura?.estado === 'offline'">⏹</span>
+    </div>
+  </div>
+  <div class="sensor-card-value">
+    <span class="sensor-value">{{ sensor.ultimaLectura?.valor ?? "--" }}</span>
+    <span class="sensor-unit">{{ sensor.unidad }}</span>
+  </div>
+  <div class="sensor-card-date">
+    <span>
+      {{ sensor.ultimaLectura?.timestamp | date : "dd/MM/yyyy, HH:mm" }}
+    </span>
+  </div>
+  <div class="sensor-card-location">
+    <div class="location-icon">📍</div>
+    <div>
+      <div>{{ sensor.ubicacion.habitacion }}</div>
+      <div>{{ sensor.ubicacion.edificio }} • {{ sensor.ubicacion.zona }}</div>
+    </div>
+  </div>
+  <div class="sensor-card-stats">
+    <div>
+      <div class="stat-label">BATERÍA</div>
+      <div class="stat-value">
+        {{ sensor.ultimaLectura?.metadata?.nivelBateria }}%
+      </div>
+    </div>
+    <div>
+      <div class="stat-label">SEÑAL</div>
+      <div class="stat-value">
+        {{ sensor.ultimaLectura?.metadata?.intensidadSenal }}%
+      </div>
+    </div>
+  </div>
+  <div class="sensor-card-footer">
+    Última calibración:
+    {{
+      sensor.ultimaLectura?.metadata?.ultimaCalibracion
+        | date : "dd/MM/yyyy, HH:mm"
+    }}
+  </div>
 </div>

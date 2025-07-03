@@ -1,6 +1,6 @@
-import { Component, inject, signal } from "@angular/core";
+import { Component, inject, signal, computed } from "@angular/core";
 import { WebSocketService } from "src/app/services/websocket.service";
-import { SensorBase } from "src/app/types/sensor.types";
+import { SensorBase, SensorConLectura } from "src/app/types/sensor.types";
 import { SensorDetailComponent } from "../sensor-detail/sensor-detail.component";
 
 @Component({
@@ -11,7 +11,23 @@ import { SensorDetailComponent } from "../sensor-detail/sensor-detail.component"
   styleUrl: "./sensor-list.component.css",
 })
 export class SensorListComponent {
-  sensores = inject(WebSocketService).sensoresDisponibles;
+  sensores = inject(WebSocketService);
+
+  sensoresConLecturas = computed(() => {
+    const sensores = this.sensores.sensoresDisponibles();
+    const lecturas = this.sensores.ultimasLecturas();
+
+    return sensores.map((sensor) => {
+      const ultimaLectura = lecturas.get(sensor.id);
+
+      return {
+        ...sensor,
+        ultimaLectura,
+        estaActivo: !!ultimaLectura && ultimaLectura.estado !== "offline",
+      } as SensorConLectura;
+    });
+  });
+
   selectedSensor = signal<SensorBase | null>(null);
 
   seleccionar(sensor: SensorBase) {

@@ -17,7 +17,7 @@ export class DashboardComponentComponent {
   metricas = computed(() => {
     const lecturas = this.wsService.ultimasLecturas();
     const lecturasArray = Array.from(lecturas.values());
-
+    
     const temperaturas = lecturasArray
       .filter((l) => l.sensorId.includes("TEMP") && typeof l.valor === "number")
       .map((l) => l.valor as number);

@@ -10,19 +10,11 @@
       </div>
     </div>
 
-    <div class="metric-card error">
-      <div class="metric-icon">⚠️</div>
-      <div class="metric-content">
-        <div class="metric-value">{{ metricas().sensoresConError }}</div>
-        <div class="metric-label">Con Errores</div>
-      </div>
-    </div>
-
     <div class="metric-card">
       <div class="metric-icon">🌡️</div>
       <div class="metric-content">
         <div class="metric-value">
-          {{ metricas().promedioTemperatura ?? '--' }}°C
+          {{ metricas().promedioTemperatura ?? "--" }}°C
         </div>
         <div class="metric-label">Temp. Promedio</div>
       </div>
@@ -32,7 +24,7 @@
       <div class="metric-icon">💧</div>
       <div class="metric-content">
         <div class="metric-value">
-          {{ metricas().promedioHumedad ?? '--' }}%
+          {{ metricas().promedioHumedad ?? "--" }}%
         </div>
         <div class="metric-label">Humedad Promedio</div>
       </div>

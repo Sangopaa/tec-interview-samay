@@ -54,16 +54,19 @@ export class WebSocketService {
   // Computed
   estaConectado = computed(() => this._estadoConexion().estado === "conectado");
 
-  sensoresActivos = computed(() =>
-    Array.from(this._ultimasLecturas().values()).filter(
-      (lectura) => lectura.estado === "normal" || lectura.estado === "advertencia"
-    ).length
+  sensoresActivos = computed(
+    () =>
+      Array.from(this._ultimasLecturas().values()).filter(
+        (lectura) =>
+          lectura.estado === "normal" || lectura.estado === "advertencia"
+      ).length
   );
 
-  sensoresConError = computed(() =>
-    Array.from(this._ultimasLecturas().values()).filter(
-      (lectura) => lectura.estado === "error" || lectura.estado === "offline"
-    ).length
+  sensoresConError = computed(
+    () =>
+      Array.from(this._ultimasLecturas().values()).filter(
+        (lectura) => lectura.estado === "error" || lectura.estado === "offline"
+      ).length
   );
 
   constructor() {
@@ -132,12 +135,10 @@ export class WebSocketService {
 
   private procesarMensaje(mensaje: any): void {
     try {
-      console.log("Mensaje recibido:", mensaje);
       this.mensajesSubject.next(mensaje);
 
       switch (mensaje.tipo) {
         case "conexion_establecida":
-          console.log(`Conexión establecida - Cliente: ${mensaje.clienteId}`);
           break;
         case "lectura_sensor":
           this.procesarLecturaSensor(mensaje.datos);
@@ -152,7 +153,6 @@ export class WebSocketService {
           this._estadisticasServidor.set(mensaje.datos);
           break;
         default:
-          console.warn("Tipo de mensaje no reconocido:", mensaje.tipo);
       }
     } catch (error) {
       console.error("Error procesando mensaje:", error);
@@ -199,7 +199,6 @@ export class WebSocketService {
 
   private intentarReconexion(): void {
     if (this.reconnectAttempts >= this.maxReconnectAttempts) {
-      console.error("Máximo número de intentos de reconexión alcanzado");
       return;
     }
 
@@ -226,7 +225,6 @@ export class WebSocketService {
     if (this.socket$ && this.estaConectado()) {
       try {
         this.socket$.next(comando);
-        console.log("Comando enviado:", comando);
       } catch (error) {
         console.error("Error enviando comando:", error);
       }

@@ -7,14 +7,21 @@ export interface SensorBase {
   id: string;
   nombre: string;
   tipo: TipoSensor;
-  ubicacion: string;
+  ubicacion: UbicacionSensor;
   unidad: string;
   rango: string;
+}
+
+export interface UbicacionSensor{
+  edificio: string;
+  habitacion: string;
+  zona: string;
 }
 
 export interface MetadataSensor {
   nivelBateria: number;
   intensidadSenal: number;
+  ultimaCalibracion: string;
 }
 
 export interface LecturaSensor {
