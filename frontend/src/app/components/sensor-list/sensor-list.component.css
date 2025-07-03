@@ -75,6 +75,33 @@
   margin: 0;
 }
 
+.sensor-filter-input,
+.sensor-filter-select {
+  width: 100%;
+  max-width: 350px;
+  min-width: 180px;
+  margin: 0 0 18px 0;
+  padding: 8px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.sensor-filter-input:focus,
+.sensor-filter-select:focus {
+  border-color: #4f8cff;
+}
+
+.sensor-filters-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
 /* Responsive Enhancements */
 @media (max-width: 600px) {
   .sensor-card {

@@ -23,11 +23,6 @@
   border: 1px solid #e5e7eb;
 }
 
-.metric-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-}
-
 .metric-card.error {
   border-left: 4px solid #ef4444;
 }

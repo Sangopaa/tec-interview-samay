@@ -1,4 +1,23 @@
 <div class="sensors-list-container">
+  <h1>Lista de Sensores</h1>
+  <div class="sensor-filters-row">
+    <input
+      type="text"
+      placeholder="Filtrar sensores por nombre..."
+      [value]="filtro()"
+      (input)="filtro.set($any($event.target).value)"
+      class="sensor-filter-input"
+    />
+    <select
+      [value]="filtroEstado()"
+      (change)="filtroEstado.set($any($event.target).value)"
+      class="sensor-filter-select"
+    >
+      @for (estado of estados; track estado.value) {
+        <option [value]="estado.value">{{ estado.label }}</option>
+      }
+    </select>
+  </div>
   <ul class="sensors-list">
     @for (sensor of sensoresConLecturas(); track sensor.id) {
     <li>
